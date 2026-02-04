@@ -21,8 +21,3 @@ export function getFileIcon(
   }
   return { source: { light: "file.png", dark: "file.png" } };
 }
-
-export function isImage(fileName: string) {
-  const ext = fileName.split(".").pop()?.toLowerCase() || "";
-  return ["jpg", "jpeg", "png", "gif", "webp", "bmp", "svg", "tiff"].includes(ext);
-}
