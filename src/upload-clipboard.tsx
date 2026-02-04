@@ -2,7 +2,7 @@ import { showToast, Toast, Clipboard, List, ActionPanel, Action } from "@raycast
 import { useEffect, useState } from "react";
 import { getAllProviders, CloudProviderAccount } from "./cloudProviders";
 import { uploadSingleFile } from "./utils/uploadHelpers";
-import { saveRecentUploads } from "./utils/recentUploads";
+import { saveRecentUploads, type RecentUpload } from "./utils/recentUploads";
 import { UploadedLinksScreen } from "./uploaded-links-view";
 
 // Utility to convert file:// URI to local file path
@@ -16,13 +16,7 @@ function fileUriToPath(fileUri: string): string {
 export default function Command() {
   const [isUploading, setIsUploading] = useState(false);
   const [providers, setProviders] = useState<CloudProviderAccount[]>([]);
-  const [uploadedLink, setUploadedLink] = useState<{
-    file: string;
-    url: string;
-    uploadedAt: number;
-    type: "public" | "presigned";
-    expiry?: number;
-  } | null>(null);
+  const [uploadedLink, setUploadedLink] = useState<RecentUpload | null>(null);
 
   useEffect(() => {
     (async () => {

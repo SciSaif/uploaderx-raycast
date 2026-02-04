@@ -2,7 +2,7 @@ import { List } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { loadRecentUploads, RecentUpload } from "./utils/recentUploads";
-import { UploadedFileListItem } from "./uploaded-links-view";
+import { UploadedFileListItem } from "@/uploaded-links-view";
 
 export default function Command() {
   const [uploads, setUploads] = useState<

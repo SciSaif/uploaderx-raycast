@@ -2,7 +2,7 @@ import { Action, ActionPanel, Form, showToast, Toast, Clipboard, List } from "@r
 import { useState, useEffect } from "react";
 import { CloudProviderAccount, CloudProviderType, getAllProviders } from "./cloudProviders";
 import { MAX_PRESIGN_EXPIRY } from "./uploaders/s3Uploader";
-import { saveRecentUploads } from "./utils/recentUploads";
+import { saveRecentUploads, type RecentUpload } from "./utils/recentUploads";
 import { uploadSingleFile } from "./utils/uploadHelpers";
 import { UploadedLinksScreen } from "./uploaded-links-view";
 
@@ -15,9 +15,7 @@ const PRESIGNED_EXPIRY_OPTIONS = [
 export default function Command() {
   const [filePaths, setFilePaths] = useState<string[]>([]);
   const [isUploading, setIsUploading] = useState(false);
-  const [uploadedLinks, setUploadedLinks] = useState<
-    { file: string; url: string; uploadedAt: number; type: "public" | "presigned"; expiry?: number }[] | null
-  >(null);
+  const [uploadedLinks, setUploadedLinks] = useState<RecentUpload[] | null>(null);
   const [expiry, setExpiry] = useState<number>(PRESIGNED_EXPIRY_OPTIONS[2].value); // default: 6 days
   const [providers, setProviders] = useState<CloudProviderAccount[]>([]);
   const [selectedProviderId, setSelectedProviderId] = useState<string | null>(null);
@@ -56,8 +54,7 @@ export default function Command() {
       setIsUploading(false);
       return;
     }
-    const links: { file: string; url: string; uploadedAt: number; type: "public" | "presigned"; expiry?: number }[] =
-      [];
+    const links: RecentUpload[] = [];
     try {
       for (const filePath of filePaths) {
         try {
