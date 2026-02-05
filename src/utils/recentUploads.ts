@@ -5,7 +5,7 @@ export type RecentUpload = {
   file: string;
   url: string;
   uploadedAt: number;
-  type?: "public" | "presigned";
+  type?: "public" | "private" | "presigned";
   expiry?: number;
 };
 

@@ -1,4 +1,15 @@
-import { Action, ActionPanel, List, showToast, Toast, confirmAlert, Icon, Form, useNavigation } from "@raycast/api";
+import {
+  Action,
+  ActionPanel,
+  List,
+  showToast,
+  Toast,
+  confirmAlert,
+  Icon,
+  Form,
+  useNavigation,
+  Keyboard,
+} from "@raycast/api";
 import { useEffect, useState } from "react";
 import {
   getAllProviders,
@@ -103,6 +114,7 @@ export default function Command() {
                   style={Action.Style.Destructive}
                   onAction={() => handleDelete(provider.id)}
                   icon={Icon.Trash}
+                  shortcut={Keyboard.Shortcut.Common.Remove}
                 />
               </ActionPanel>
             }

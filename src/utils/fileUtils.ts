@@ -10,12 +10,14 @@ export function truncateUrl(url: string, maxLength = 50): string {
   return url.slice(0, maxLength - 3) + "...";
 }
 
+const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "webp", "bmp", "svg", "tiff"];
+
 export function getFileIcon(
   fileName: string,
   url: string,
 ): { source: string } | { source: { light: string; dark: string } } {
   const ext = fileName.split(".").pop()?.toLowerCase() || "";
-  if (["jpg", "jpeg", "png", "gif", "webp", "bmp", "svg", "tiff"].includes(ext)) {
+  if (IMAGE_EXTENSIONS.includes(ext)) {
     return { source: url };
   }
   if (ext === "pdf") {

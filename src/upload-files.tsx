@@ -1,4 +1,5 @@
 import { Action, ActionPanel, Form, showToast, Toast, Clipboard, List } from "@raycast/api";
+import { showFailureToast } from "@raycast/utils";
 import { useState, useEffect } from "react";
 import { CloudProviderAccount, CloudProviderType, getAllProviders } from "./cloudProviders";
 import { MAX_PRESIGN_EXPIRY } from "./uploaders/s3Uploader";
@@ -68,17 +69,7 @@ export default function Command() {
           links.push(link);
         } catch (err: unknown) {
           console.error("Upload failed for file:", filePath, err);
-          await showToast({
-            style: Toast.Style.Failure,
-            title: `Upload failed: ${filePath.split("/").pop()}`,
-            message:
-              typeof err === "object" &&
-              err !== null &&
-              "message" in err &&
-              typeof (err as { message?: unknown }).message === "string"
-                ? (err as { message: string }).message
-                : String(err),
-          });
+          await showFailureToast(err, { title: `Upload failed: ${filePath.split("/").pop()}` });
           continue;
         }
       }
