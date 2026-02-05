@@ -5,6 +5,11 @@ export function truncateFileName(fileName: string, maxLength = 24): string {
   return `${base}...${ext}`;
 }
 
+export function truncateUrl(url: string, maxLength = 50): string {
+  if (url.length <= maxLength) return url;
+  return url.slice(0, maxLength - 3) + "...";
+}
+
 export function getFileIcon(
   fileName: string,
   url: string,
