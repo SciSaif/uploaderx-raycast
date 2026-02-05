@@ -5,9 +5,7 @@ import { loadRecentUploads, RecentUpload } from "./utils/recentUploads";
 import { UploadedFileListItem } from "@/uploaded-links-view";
 
 export default function Command() {
-  const [uploads, setUploads] = useState<
-    (RecentUpload & { id: string })[]
-  >([]);
+  const [uploads, setUploads] = useState<(RecentUpload & { id: string })[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

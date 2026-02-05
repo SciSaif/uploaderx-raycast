@@ -48,4 +48,3 @@ export async function uploadSingleFile(
     expiry: expiryValue,
   };
 }
-

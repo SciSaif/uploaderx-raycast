@@ -1,10 +1,11 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "uploaderX",
+  "name": "uploaderx",
   "title": "UploaderX",
   "description": "UploaderX lets you instantly upload files to your favorite cloud storage providers—directly from Raycast.\nSupports S3-compatible storage (AWS S3, Cloudflare R2, Wasabi, Backblaze B2, MinIO, etc.) and non-S3 platforms like BunnyCDN.\nManage multiple accounts, set custom paths and get a shareable link—all from your keyboard.",
   "icon": "extension-icon.png",
   "author": "scisaif",
+  "type": "module",
   "license": "MIT",
   "platforms": [
     "macOS"

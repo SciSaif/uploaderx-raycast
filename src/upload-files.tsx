@@ -61,8 +61,7 @@ export default function Command() {
         try {
           const link = await uploadSingleFile(currentProvider, filePath, {
             expiry:
-              currentProvider.providerType === CloudProviderType.S3 &&
-              currentProvider.accessLevel === "private"
+              currentProvider.providerType === CloudProviderType.S3 && currentProvider.accessLevel === "private"
                 ? Math.min(expiry, MAX_PRESIGN_EXPIRY)
                 : undefined,
           });

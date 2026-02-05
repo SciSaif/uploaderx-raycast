@@ -26,4 +26,3 @@ export async function saveRecentUploads(newLinks: RecentUpload[], limit = 50): P
   const merged = [...newLinks, ...existing].slice(0, limit);
   await LocalStorage.setItem(RECENT_UPLOADS_KEY, JSON.stringify(merged));
 }
-
