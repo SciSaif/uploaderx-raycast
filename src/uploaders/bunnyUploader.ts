@@ -9,7 +9,7 @@ export async function uploadToBunny(
   filePath: string,
   defaultPath: string,
 ): Promise<string> {
-  const { storageZone, apiKey, domain, storageEndpoint } = provider.credentials;
+  const { storageZone, apiKey, storageEndpoint } = provider.credentials;
   if (!storageZone || !apiKey) throw new Error("Missing BunnyCDN credentials");
   const endpoint = storageEndpoint || "storage.bunnycdn.com";
   const fileName = path.basename(filePath);
